@@ -2,16 +2,16 @@
 
 export DISPLAY=:0
 
-ENV_FILE="$HOME/.pitoolenv"
+ENV_FILE="$HOME/.zordex-pi-tool.env"
 [ -f "$ENV_FILE" ] && . "$ENV_FILE"
 
-LOG="$HOME/pitoolstart.log"
+LOG="$HOME/zordex-pi-tool-start.log"
 REPO_DIR="${REPO_DIR:-$HOME/zigg}"
 DISPLAY_OUTPUT="${DISPLAY_OUTPUT:-SPI-1}"
 APP_URL="${APP_URL:-http://localhost:3000}"
 
 {
-  echo "[pitoolstart] $(date) start"
+  echo "[zordex-pi-tool-start] $(date) start"
 
   xset -dpms
   xset s off
@@ -21,7 +21,7 @@ APP_URL="${APP_URL:-http://localhost:3000}"
   if xrandr | grep -q "^${DISPLAY_OUTPUT} "; then
     xrandr --output "$DISPLAY_OUTPUT" --rotate normal --gamma 1:1:1
   else
-    echo "[pitoolstart] display output ${DISPLAY_OUTPUT} not found, skipping xrandr"
+    echo "[zordex-pi-tool-start] display output ${DISPLAY_OUTPUT} not found, skipping xrandr"
   fi
 
   # touch fix (180° rotation case)
@@ -37,11 +37,11 @@ APP_URL="${APP_URL:-http://localhost:3000}"
   if command -v pm2 >/dev/null 2>&1; then
     pm2 resurrect || pm2 start "$REPO_DIR/ecosystem.config.js"
   else
-    echo "[pitoolstart] pm2 not found" 
+    echo "[zordex-pi-tool-start] pm2 not found"
   fi
 
   # wait for localhost:3000
-  echo "[pitoolstart] waiting for ${APP_URL}"
+  echo "[zordex-pi-tool-start] waiting for ${APP_URL}"
   READY=0
   i=0
   while [ $i -lt 30 ]; do
@@ -65,9 +65,9 @@ APP_URL="${APP_URL:-http://localhost:3000}"
   done
 
   if [ $READY -eq 1 ]; then
-    echo "[pitoolstart] app is ready"
+    echo "[zordex-pi-tool-start] app is ready"
   else
-    echo "[pitoolstart] timeout waiting for app"
+    echo "[zordex-pi-tool-start] timeout waiting for app"
   fi
 
   # find chromium binary
@@ -80,7 +80,7 @@ APP_URL="${APP_URL:-http://localhost:3000}"
   fi
 
   if [ -z "$CHROME_CMD" ]; then
-    echo "[pitoolstart] chromium not found"
+    echo "[zordex-pi-tool-start] chromium not found"
     exit 1
   fi
 

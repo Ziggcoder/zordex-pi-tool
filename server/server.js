@@ -242,5 +242,5 @@ if (fs.existsSync(STATIC_DIR)) {
 }
 
 app.listen(PORT, () => {
-  console.log(`Wendor Toolkit server listening on port ${PORT}`);
+  console.log(`Zordex Pi Tool server listening on port ${PORT}`);
 });

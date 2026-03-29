@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "zordex-pitool",
+      name: "zordex-pi-tool",
       cwd: "/home/zigg/zigg/server",
       script: "server.js",
       env: {

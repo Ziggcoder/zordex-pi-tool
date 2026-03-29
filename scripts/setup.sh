@@ -9,10 +9,10 @@ if [ -d "$SCRIPT_DIR/../client" ] && [ -d "$SCRIPT_DIR/../server" ]; then
 else
   if [ -z "$REPO_URL" ]; then
     echo "REPO_URL is required when running outside the repo"
-    echo "Example: REPO_URL=git@github.com:you/zordex-pitool.git $0"
+    echo "Example: REPO_URL=git@github.com:you/zordex-pi-tool.git $0"
     exit 1
   fi
-  INSTALL_DIR="${INSTALL_DIR:-$HOME/zordex-pitool}"
+  INSTALL_DIR="${INSTALL_DIR:-$HOME/zordex-pi-tool}"
   if [ ! -d "$INSTALL_DIR" ]; then
     git clone "$REPO_URL" "$INSTALL_DIR"
   fi
@@ -34,11 +34,11 @@ npm --prefix "$REPO_DIR/client" install
 npm --prefix "$REPO_DIR/client" run build
 
 # Install kiosk scripts
-cp "$REPO_DIR/scripts/pitoolstart.sh" "$HOME/pitoolstart.sh"
-chmod +x "$HOME/pitoolstart.sh"
+cp "$REPO_DIR/scripts/zordex-pi-tool-start.sh" "$HOME/zordex-pi-tool-start.sh"
+chmod +x "$HOME/zordex-pi-tool-start.sh"
 
 # Persist runtime config
-cat > "$HOME/.pitoolenv" <<EOF
+cat > "$HOME/.zordex-pi-tool.env" <<EOF
 REPO_DIR="$REPO_DIR"
 DISPLAY_OUTPUT="${DISPLAY_OUTPUT:-SPI-1}"
 APP_URL="${APP_URL:-http://localhost:3000}"
@@ -46,7 +46,7 @@ EOF
 
 cat > "$HOME/.xinitrc" <<'XINIT'
 #!/bin/sh
-exec "$HOME/pitoolstart.sh"
+exec "$HOME/zordex-pi-tool-start.sh"
 XINIT
 
 chmod +x "$HOME/.xinitrc"

@@ -205,7 +205,7 @@ export default function App() {
   if (screen === SCREENS.HOME) {
     return (
       <div className="app">
-        <Header title="Wendor Toolkit" />
+        <Header title="Zordex Pi Tool" />
         <div className="content">
           <div className="status-grid">
             <div className="status-card">

@@ -1,4 +1,4 @@
-# Wendor Toolkit
+# Zordex Pi Tool
 
 A lightweight, kiosk-style React + Node.js dashboard for Raspberry Pi 5 with a 480x320 SPI TFT display. Designed for low resource usage, touch input, and minimal lag.
 
@@ -34,7 +34,7 @@ A lightweight, kiosk-style React + Node.js dashboard for Raspberry Pi 5 with a 4
 ### `package.json`
 ```json
 {
-  "name": "wendor-toolkit",
+  "name": "zordex-pi-tool",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -52,7 +52,7 @@ A lightweight, kiosk-style React + Node.js dashboard for Raspberry Pi 5 with a 4
 module.exports = {
   apps: [
     {
-      name: "wendor-toolkit",
+      name: "zordex-pi-tool",
       cwd: "/home/zigg/zigg/server",
       script: "server.js",
       env: {
@@ -68,7 +68,7 @@ module.exports = {
 ### `server/package.json`
 ```json
 {
-  "name": "wendor-toolkit-server",
+  "name": "zordex-pi-tool-server",
   "version": "1.0.0",
   "private": true,
   "main": "server.js",
@@ -329,13 +329,13 @@ if (fs.existsSync(STATIC_DIR)) {
 }
 
 app.listen(PORT, () => {
-  console.log(`Wendor Toolkit server listening on port ${PORT}`);
+  console.log(`Zordex Pi Tool server listening on port ${PORT}`);
 });
 ```
 
 ### `server/data/sample.log`
 ```
-[2026-03-29 10:00:01] boot: Wendor Toolkit starting
+[2026-03-29 10:00:01] boot: Zordex Pi Tool starting
 [2026-03-29 10:00:03] net: wlan0 up, dhcp acquired
 [2026-03-29 10:00:05] usb: 1 device(s) connected
 [2026-03-29 10:01:12] serial: /dev/ttyUSB0 opened (115200)
@@ -350,7 +350,7 @@ app.listen(PORT, () => {
 ### `client/package.json`
 ```json
 {
-  "name": "wendor-toolkit-client",
+  "name": "zordex-pi-tool-client",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -399,7 +399,7 @@ export default defineConfig({
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
-    <title>Wendor Toolkit</title>
+    <title>Zordex Pi Tool</title>
   </head>
   <body>
     <div id="root"></div>
@@ -628,7 +628,7 @@ export default function App() {
   if (screen === SCREENS.HOME) {
     return (
       <div className="app">
-        <Header title="Wendor Toolkit" />
+        <Header title="Zordex Pi Tool" />
         <div className="content">
           <div className="status-grid">
             <div className="status-card">
