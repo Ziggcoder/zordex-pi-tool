@@ -1,0 +1,14 @@
+{
+  "name": "wendor-toolkit-server",
+  "version": "1.0.0",
+  "private": true,
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development PORT=3001 node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
